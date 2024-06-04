@@ -16,6 +16,7 @@
             <thead>
                 <tr>
                     <th class="py-2 px-4 border-b">Name</th>
+                    <th class="py-2 px-4 border-b">Father Name</th>
                     <th class="py-2 px-4 border-b">Email</th>
                     <th class="py-2 px-4 border-b">Course</th>
                     <th class="py-2 px-4 border-b">Actions</th>
@@ -25,16 +26,19 @@
                 @foreach($students as $student)
                 <tr>
                     <td class="py-2 px-4 border-b">{{ $student->name }}</td>
+                    <td class="py-2 px-4 border-b">{{ $student->fathername? $student->fathername:'No father'}}</td>
                     <td class="py-2 px-4 border-b">{{ $student->email }}</td>
                     <td class="py-2 px-4 border-b">{{ $student->course }}</td>
                     <td class="py-2 px-4 border-b">
                         <a href="{{ route('students.show', $student->id) }}" class="text-blue-500">View</a>
+                        @if(Auth::id() === $student->user_id)
                         <a href="{{ route('students.edit', $student->id) }}" class="text-green-500 ml-2">Edit</a>
                         <form action="{{ route('students.destroy', $student->id) }}" method="POST" class="inline-block ml-2">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="text-red-500">Delete</button>
                         </form>
+                        @endif
                     </td>
                 </tr>
                 @endforeach

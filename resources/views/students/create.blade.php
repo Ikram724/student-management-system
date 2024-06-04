@@ -19,6 +19,10 @@
                 <input type="text" name="name" class="w-full border rounded px-3 py-2">
             </div>
             <div class="mb-4">
+                <label class="block text-gray-700">Father Name</label>
+                <input type="text" name="fathername" class="w-full border rounded px-3 py-2">
+            </div>
+            <div class="mb-4">
                 <label class="block text-gray-700">Email</label>
                 <input type="email" name="email" class="w-full border rounded px-3 py-2">
             </div>
